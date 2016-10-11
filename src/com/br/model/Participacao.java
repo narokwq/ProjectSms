@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity(name="tb_mesa")
+@Entity(name="tb_participacao")
 public class Participacao implements EntityClass {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
