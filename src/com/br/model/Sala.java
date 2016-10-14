@@ -3,6 +3,7 @@ package com.br.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +18,9 @@ public class Sala implements EntityClass{
 	private String nome;
 	@ManyToOne
 	private Professor professor;
-	@OneToMany(mappedBy="sala")
+	@OneToMany(mappedBy="sala", fetch=FetchType.EAGER)
 	private List<Participacao> participacaos;
+	private String key;
 	
 	public String getNome() {
 		return nome;
@@ -46,5 +48,19 @@ public class Sala implements EntityClass{
 	public void setParticipacaos(List<Participacao> participacaos) {
 		this.participacaos = participacaos;
 	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	public int getSizeParticipacoes() {
+		int valor = 0;
+		if(participacaos != null){
+			valor = participacaos.size();
+		}
+		return valor;
+	}
+	
 
 }

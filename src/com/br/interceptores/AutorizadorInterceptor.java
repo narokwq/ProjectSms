@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.br.util.HashPassword;
+
 public class AutorizadorInterceptor extends HandlerInterceptorAdapter{ 
 	
    @Override 
@@ -23,6 +25,10 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
          return true; 
        } 
        response.sendRedirect(contextPath+"/login"); 
+       System.out.println(HashPassword.uniqueLink());
+       System.out.println(HashPassword.uniqueLink());
+       System.out.println(HashPassword.uniqueLink());
+       System.out.println(HashPassword.uniqueLink());
        return false; 
    } 
 }

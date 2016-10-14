@@ -19,17 +19,16 @@ public class ProfessorDAO extends GenericDAO<Professor>{
 
 	public boolean exist(Professor professor) {
 		Query result = null;
-		result = this.manager.createQuery("SELECT COUNT(p) FROM Professor p WHERE p.login.login = :login");
+		result = this.manager.createQuery("SELECT COUNT(p) FROM tb_professor p WHERE p.login.login = :login");
 		result.setParameter("login", professor.getLogin().getLogin());
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
 	
 	public Professor procurarLoginSenha(Login login){
-		Query query = manager.createQuery("SELECT p FROM Professor p WHERE p.login.login = :login and p.login.senha = :senha");
+		Query query = manager.createQuery("SELECT p FROM tb_professor p WHERE p.login.login = :login and p.login.senha = :senha");
 		query.setParameter("login",login.getLogin());
 		query.setParameter("senha",login.getSenha());
-		query.setParameter("status", false);
 	
 		List<?> professores =  query.getResultList();
 		

@@ -44,4 +44,8 @@ public class SalaService {
 
 		return result;
 	}
+	
+	public boolean checkKey(String key) {
+		return salaDAO.check(key);
+	}
 }
