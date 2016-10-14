@@ -56,6 +56,14 @@ button.btn {
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
+button.blue{
+	background: #99b9ea !important;
+}
+
+button.green{
+	background: #ade39f !important;
+}
+
 button.btn:hover { opacity: 0.6; color: #fff; background: #de615e;}
 
 button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; background: #de615e;}

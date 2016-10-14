@@ -1,23 +1,24 @@
 package com.br.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity(name="tb_participacao")
+@Entity(name = "tb_participacao")
 public class Participacao implements EntityClass {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private int qtdQuestoes;
 	private int pontuacao;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Aluno aluno;
 	@ManyToOne
 	private Sala sala;
-	
+
 	@Override
 	public void setId(Long id) {
 		this.id = id;
@@ -59,7 +60,5 @@ public class Participacao implements EntityClass {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
-	
-	
 
 }

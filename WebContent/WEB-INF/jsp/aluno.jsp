@@ -15,10 +15,10 @@
 </head>
 <body>
 
-	<c:url var="url" value="/cliente/salvar" />
+	<c:url var="url" value="salvar" />
 	<form:form class="form-horizontal form-login" action="${url}" method="post"
-		modelAttribute="cliente">
-		<spring:bind path="login.login">
+		modelAttribute="aluno">
+		<spring:bind path="nome">
 			<c:if test="${status.error}">
 				<div class="alert alert-danger col-sm-12"
 					role="alert">
@@ -34,29 +34,28 @@
 
 			<div id="login-box-interno">
 				<div id="login-box-interno-label">
-					<h2>Cadastro de Professor</h2>
+					<h2>Cadastro de aluno</h2>
 				</div>
 
 				<div class="form-group" style="margin-top: 20px;">
 
 					<div class="col-sm-offset-1 col-sm-10">
-						<form:input path="login.login" type="text" class="form-control"
-							placeholder="Login" required="required" autocomplete="off" />
+						<form:input path="nome" type="text" class="form-control"
+							placeholder="Nome" required="required" autocomplete="off" />
 					</div>
 				</div>
 				<div class="form-group" style="margin-top: 15px;">
 
 					<div class="col-sm-offset-1 col-sm-10">
-						<form:password path="login.senha" class="form-control"
-							placeholder="Senha" required="required" autocomplete="off" />
+						<form:input path="telefone" class="form-control"
+							placeholder="Celular" required="required" autocomplete="off" />
 					</div>
 				</div>
 				<div class="form-group">
 
 					<div class="col-sm-offset-1 col-sm-10">
-						<button type="submit" class="btn btn-info blue">Cadastrar</button>
+						<button type="submit" class="btn btn-info green">Cadastrar</button>
 
-						<h5 style="color: #ffffff; text-align: center; margin-top:13px;"><a href="<c:url value="/home" />">Se logue!</a></h5>
 						</div>
 
 					</div>

@@ -19,9 +19,9 @@
 <body>
 <section id="container" class="">
     <header class="header bg_nav" >
-        <a href="index.html" class="logo">Plim <span class="lite">Interativo</span></a>
+        <a href="<c:url value ="/home" />" class="logo">Plim <span class="lite">Interativo</span></a>
         <div class="top-nav notification-row">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="logout">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="<c:url value ="/logout" />">
                         <span class="logout">Logout</span>
                     </a>
         </div>
@@ -31,7 +31,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a class="" href="index.html">
+                    <a class="" href="<c:url value ="/home" />">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span>Salas</span>
                     </a>

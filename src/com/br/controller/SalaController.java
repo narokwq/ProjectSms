@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,7 +38,8 @@ public class SalaController {
 		Professor professor = (Professor) session.getAttribute("usuario");
 		if (professor.hasValidId()) {
 			String keyHash = HashPassword.uniqueLink();
-			while(salaService.checkKey(keyHash));
+			while (salaService.checkKey(keyHash))
+				;
 			sala.setKey(keyHash);
 			sala.setProfessor(professor);
 			salaService.criar(sala);
@@ -45,5 +47,13 @@ public class SalaController {
 			return "redirect:/login";
 		}
 		return "redirect:/home";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "{keyhash}/list")
+	public String updateForm(@PathVariable String keyhash, ModelMap map) {
+		Sala sala = salaService.procurarByKey(keyhash);
+		map.addAttribute("sala", sala);
+		map.addAttribute("keyhash", keyhash);
+		return "sala";
 	}
 }

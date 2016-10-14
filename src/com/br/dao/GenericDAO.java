@@ -9,34 +9,32 @@ import javax.persistence.Query;
 import com.br.model.EntityClass;
 
 public abstract class GenericDAO<T extends EntityClass> {
-	
+
 	@PersistenceContext
 	protected EntityManager manager;
 
-	
-	public void insert(T entity){
+	public void insert(T entity) {
 		manager.persist(entity);
 	}
-	
-	public T findById(Long id){
+
+	public T findById(Long id) {
 		return manager.find(getClassType(), id);
 	}
-	
-	public void update(T entity){
+
+	public void update(T entity) {
 		manager.merge(entity);
 	}
-	
-	public void delete(T entity){
+
+	public void delete(T entity) {
 		entity = findById(entity.getId());
 		manager.remove(entity);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<T> getAll() {
-		Query query = manager.createQuery("select p from "
-				+ getClassType().getSimpleName() + " p");
-		return  query.getResultList();
+		Query query = manager.createQuery("select p from " + getClassType().getSimpleName() + " p");
+		return query.getResultList();
 	}
-	
+
 	public abstract Class<T> getClassType();
 }

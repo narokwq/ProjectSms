@@ -30,10 +30,16 @@ public class SalaService {
 		salaDAO.update(sala);
 	}
 
-
 	public Sala procurar(Sala sala) {
 		Sala result = null;
 		result = salaDAO.findById(sala.getId());
+
+		return result;
+	}
+
+	public Sala procurarByKey(String keyhash) {
+		Sala result = null;
+		result = salaDAO.findByKey(keyhash);
 
 		return result;
 	}
@@ -44,7 +50,7 @@ public class SalaService {
 
 		return result;
 	}
-	
+
 	public boolean checkKey(String key) {
 		return salaDAO.check(key);
 	}

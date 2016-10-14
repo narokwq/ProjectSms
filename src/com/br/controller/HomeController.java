@@ -11,8 +11,8 @@ import com.br.model.Professor;
 
 @Controller
 public class HomeController {
-	@RequestMapping(value="home", method=RequestMethod.GET)
-	public String home(ModelMap map, HttpSession session){
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String home(ModelMap map, HttpSession session) {
 		Professor professor = (Professor) session.getAttribute("usuario");
 		map.addAttribute("salas", professor.getSalas());
 		return "home";

@@ -19,37 +19,36 @@ import com.br.services.ProfessorService;
 public class LoginController {
 	@Autowired
 	private ProfessorService professorService;
-	
-	@RequestMapping(value={"/", "login"}, method=RequestMethod.GET)
-	public String login(ModelMap map){
+
+	@RequestMapping(value = { "/", "login" }, method = RequestMethod.GET)
+	public String login(ModelMap map) {
 		map.addAttribute("login", new Login());
 		return "login";
 	}
 
-	@RequestMapping(value="logar", method=RequestMethod.POST)
-	public String logar(@Valid @ModelAttribute("login") Login user, BindingResult result, HttpSession sessao, ModelMap map){
-		if(result.hasErrors()){
-			return  "login";
+	@RequestMapping(value = "logar", method = RequestMethod.POST)
+	public String logar(@Valid @ModelAttribute("login") Login user, BindingResult result, HttpSession sessao,
+			ModelMap map) {
+		if (result.hasErrors()) {
+			return "login";
 		}
-		
+
 		Professor professorBD = null;
 		professorBD = professorService.logar(user);
 
-		if(professorBD == null){
+		if (professorBD == null) {
 			user.setSenha("");
-			result.rejectValue("","login", "Nome de usuário ou senha errados. Por favor tente outra vez.");
-			return  "login";
+			result.rejectValue("", "login", "Nome de usuário ou senha errados. Por favor tente outra vez.");
+			return "login";
 		}
 		sessao.setAttribute("usuario", professorBD);
 		return "redirect:/home";
 	}
-	
-	@RequestMapping(value="logout", method=RequestMethod.GET)
-	public String login(HttpSession session){
+
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String login(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login";
 	}
-	
-	
 
 }

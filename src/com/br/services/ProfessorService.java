@@ -21,13 +21,12 @@ public class ProfessorService {
 
 	public void criar(Professor professor) throws Exception {
 		boolean exist = professorDAO.exist(professor);
-		if(exist){
+		if (exist) {
 			throw new Exception("Usuario já existe");
-		}	
+		}
 		professorDAO.insert(professor);
 
 	}
-	
 
 	public void remover(Professor professor) {
 		professorDAO.delete(professor);
@@ -36,7 +35,6 @@ public class ProfessorService {
 	public void atualizar(Professor professor) {
 		professorDAO.update(professor);
 	}
-
 
 	public Professor procurar(Professor professor) {
 		Professor result = null;
@@ -51,16 +49,15 @@ public class ProfessorService {
 
 		return result;
 	}
-	
+
 	public Professor procurarPorLoginSenha(Login login) {
 		Professor result = null;
 		result = professorDAO.procurarLoginSenha(login);
-		
+
 		return result;
 	}
-	
 
-	public Professor logar(Login login){
+	public Professor logar(Login login) {
 		try {
 			login.criarSenha(login.getSenha());
 		} catch (NoSuchAlgorithmException e) {

@@ -30,8 +30,8 @@ public class ProfessorController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "salvar")
-	public String salvar(@Valid @ModelAttribute("cliente") Professor professor, BindingResult result, HttpSession session)
-			throws Exception {
+	public String salvar(@Valid @ModelAttribute("cliente") Professor professor, BindingResult result,
+			HttpSession session) throws Exception {
 
 		Date dataCadastro = new Date();
 		professor.getLogin().criarSenha(professor.getLogin().getSenha());

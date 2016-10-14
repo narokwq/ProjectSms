@@ -16,19 +16,19 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity(name="tb_professor")
+@Entity(name = "tb_professor")
 public class Professor implements EntityClass {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Embedded
 	private Login login;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date data;
-	@OneToMany(mappedBy="professor", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "professor", fetch = FetchType.EAGER)
 	private List<Sala> salas;
-	
+
 	@Override
 	public void setId(Long id) {
 		this.id = id;
@@ -38,7 +38,7 @@ public class Professor implements EntityClass {
 	public Long getId() {
 		return this.id;
 	}
-	
+
 	public List<Sala> getSalas() {
 		return salas;
 	}
@@ -50,7 +50,7 @@ public class Professor implements EntityClass {
 	public void addSalas(Sala sala) {
 		this.salas.add(sala);
 	}
-	
+
 	public Login getLogin() {
 		return login;
 	}
@@ -67,12 +67,12 @@ public class Professor implements EntityClass {
 		this.data = data;
 	}
 
-	public void createLogin(String user, String senha) throws NoSuchAlgorithmException{
+	public void createLogin(String user, String senha) throws NoSuchAlgorithmException {
 		login = new Login();
 		login.setLogin(user);
 		login.criarSenha(senha);
 	}
-	
+
 	public boolean hasValidId() {
 		return getId() != null && getId() != 0;
 	}
