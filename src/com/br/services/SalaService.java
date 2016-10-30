@@ -50,6 +50,13 @@ public class SalaService {
 
 		return result;
 	}
+	
+	public List<Sala> listarByProfessor(Long idProfessor) {
+		List<Sala> result = Collections.emptyList();
+		result = salaDAO.findByProfessor(idProfessor);
+
+		return result;
+	}
 
 	public boolean checkKey(String key) {
 		return salaDAO.check(key);

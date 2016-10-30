@@ -31,4 +31,12 @@ public class SalaDAO extends GenericDAO<Sala> {
 
 		return sala.isEmpty() ? null : (Sala) sala.get(0);
 	}
+
+	public List<Sala> findByProfessor(Long idProfessor) {
+		Query query = manager.createQuery("SELECT s FROM tb_sala s WHERE s.professor.id = :id");
+		query.setParameter("id", idProfessor);
+
+		List<Sala> sala = query.getResultList();
+		return sala;
+	}
 }

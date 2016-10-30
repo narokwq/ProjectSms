@@ -17,7 +17,7 @@ public class HashPassword {
 
 	public static String uniqueLink() {
 		final String[] passwords = new String[] {
-				"ALKJVBPIQYTUIWEBVPQALZVKQRWORTUYOYISHFLKAJMZNXBVMNFGAHKJSDFALAPOQIERIUYTGSFGKMZNXBVJAHGFAKX" };
+				"abcdefghijklmnopqrstuvwxyz" };
 		final StringBuilder result = new StringBuilder();
 		final long passwordLength = 10;
 		for (int index = 0; index < passwordLength; index += 1) {

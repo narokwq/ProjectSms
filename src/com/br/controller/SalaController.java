@@ -52,8 +52,12 @@ public class SalaController {
 	@RequestMapping(method = RequestMethod.GET, value = "{keyhash}/list")
 	public String updateForm(@PathVariable String keyhash, ModelMap map) {
 		Sala sala = salaService.procurarByKey(keyhash);
-		map.addAttribute("sala", sala);
-		map.addAttribute("keyhash", keyhash);
-		return "sala";
+		if(sala != null){
+			map.addAttribute("sala", sala);
+			map.addAttribute("keyhash", keyhash);
+			return "sala";
+		}
+		return "redirect:/home";
+		
 	}
 }

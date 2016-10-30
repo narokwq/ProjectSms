@@ -1,5 +1,6 @@
 package com.br.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -31,12 +32,17 @@ public class ProfessorController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "salvar")
 	public String salvar(@Valid @ModelAttribute("cliente") Professor professor, BindingResult result,
-			HttpSession session) throws Exception {
-
+			HttpSession session, ModelMap map) throws NoSuchAlgorithmException{
+		System.out.println("passou Aqui");
 		Date dataCadastro = new Date();
 		professor.getLogin().criarSenha(professor.getLogin().getSenha());
 		professor.setData(dataCadastro);
-		professorService.criar(professor);
+		try {
+			professorService.criar(professor);
+		} catch (Exception e) {
+				map.addAttribute("message", "Usuario já existe!");
+				return "form";
+		}
 
 		return "redirect:/login";
 	}
