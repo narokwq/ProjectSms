@@ -32,12 +32,12 @@ public class ParticipacaoController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "{keyhash}/{id}/pontuar")
-	public String addPontuacao(@PathVariable Long keyhash, @PathVariable Long id){
+	public String addPontuacao(@PathVariable String keyhash, @PathVariable Long id){
 		Participacao participacao = new Participacao();
 		participacao.setId(id);
-		particService.atulizarPontuacao(participacao);
+		particService.atualizarPontuacao(participacao);
 		
-		return "redirect:/sala"+keyhash+"/list";
+		return "redirect:/sala/"+keyhash+"/list";
 		
 	}
 }
