@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import javax.persistence.CascadeType;
+
 @Entity(name = "tb_aluno")
 public class Aluno implements EntityClass {
 	@Id
@@ -17,7 +19,7 @@ public class Aluno implements EntityClass {
 	private Long id;
 	private String nome;
 	private String telefone;
-	@OneToMany(mappedBy = "aluno", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<Participacao> participacaos;
 
 	@Override
@@ -60,5 +62,13 @@ public class Aluno implements EntityClass {
 		}
 		this.participacaos.add(part);
 	}
+
+	@Override
+	public String toString() {
+		return "Aluno [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", participacaos=" + participacaos
+				+ "]";
+	}
+	
+	
 
 }

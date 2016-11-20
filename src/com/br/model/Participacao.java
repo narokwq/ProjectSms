@@ -14,7 +14,7 @@ public class Participacao implements EntityClass {
 	private Long id;
 	private int qtdQuestoes;
 	private int pontuacao;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private Aluno aluno;
 	@ManyToOne
 	private Sala sala;
@@ -63,5 +63,13 @@ public class Participacao implements EntityClass {
 	public void addPonto(int ponto) {
 		this.pontuacao += ponto;
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public String toString() {
+		return "Participacao [id=" + id + ", qtdQuestoes=" + qtdQuestoes + ", pontuacao=" + pontuacao + "]";
+	}
+>>>>>>> 5ecb315c1fc2af8e55a433e1f596085a5b0dfdf4
 
 }
