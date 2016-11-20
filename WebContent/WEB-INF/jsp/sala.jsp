@@ -37,7 +37,8 @@
 								<td>${participacao.pontuacao}</td>
  								<td>
 									<div class="btn-group">
-										<a class="btn btn-danger" href="<c:url value="/participacao/${participacao.id}/addPonto" />"><i class="fa fa-trash-o"></i></a>
+										<a class="btn btn-success" href="<c:url value="/participacao/${participacao.id}/pontuar" />"><i class="fa fa-trash-o"></i> Pontuar</a>
+										<a class="btn btn-danger" href="<c:url value="/aluno/${keyhash}/${participacao.aluno.id}/remover" />"><i class="fa fa-trash-o"></i> Remover</a>
 									</div>
 								</td> 
 							</tr>

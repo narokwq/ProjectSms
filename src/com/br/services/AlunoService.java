@@ -38,7 +38,7 @@ public class AlunoService {
 	}
 
 	public void remover(Aluno aluno) {
-		alunoDAO.delete(procurar(aluno));
+		alunoDAO.delete(aluno);
 	}
 
 	public void removerParticipacao(Participacao participacao) {

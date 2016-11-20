@@ -10,7 +10,7 @@ public class ParticipacaoDAO extends GenericDAO<Participacao> {
 	@Override
 	public Class<Participacao> getClassType() {
 		// TODO Auto-generated method stub
-		return null;
+		return Participacao.class;
 	}
 	
 	

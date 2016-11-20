@@ -49,13 +49,13 @@ public class AlunoController {
 	
 	
 
-	@RequestMapping(method = RequestMethod.GET, value = "{id}/remover")
-	public String deleteForm(@PathVariable Long id, ModelMap map) {
+	@RequestMapping(method = RequestMethod.GET, value = "{keyhash}/{id}/remover")
+	public String deleteForm(@PathVariable String keyhash, @PathVariable Long id, ModelMap map) {
 		Aluno aluno = new Aluno();
 		aluno.setId(id);
 		alunoService.remover(aluno);
 		map.addAttribute("aluno", new Aluno());
-		return "aluno";
+		return "redirect:/sala/"+keyhash+"/list";
 	}
 	
 
