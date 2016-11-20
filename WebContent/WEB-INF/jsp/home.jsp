@@ -19,8 +19,12 @@
 						class="fa fa-users"></i>
 						<div class="count">${sala.nome}</div>
 						<div class="title">${sala.sizeParticipacoes} Alunos</div>
+						<%-- Guga --%>
+						
 					</a>
-
+					<div class="btn-group">
+						<a class="btn btn-danger" href="<c:url value="/sala/${sala.key}/remover" />"><i class="fa fa-trash-o"></i></a>
+					</div>
 				</div>
 			</c:forEach>
 

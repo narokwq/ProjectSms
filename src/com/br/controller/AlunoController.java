@@ -46,6 +46,8 @@ public class AlunoController {
 		}
 		return "redirect:/login";
 	}
+	
+	
 
 	@RequestMapping(method = RequestMethod.GET, value = "{id}/remover")
 	public String deleteForm(@PathVariable Long id, ModelMap map) {
@@ -55,5 +57,6 @@ public class AlunoController {
 		map.addAttribute("aluno", new Aluno());
 		return "aluno";
 	}
+	
 
 }

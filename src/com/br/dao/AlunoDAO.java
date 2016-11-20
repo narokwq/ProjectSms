@@ -30,4 +30,5 @@ public class AlunoDAO extends GenericDAO<Aluno> {
 
 		return ((long) result.getSingleResult()) != 0;
 	}
+	
 }

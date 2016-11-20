@@ -60,5 +60,8 @@ public class Participacao implements EntityClass {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
+	public void addPonto(int ponto) {
+		this.pontuacao += ponto;
+	}
 
 }
