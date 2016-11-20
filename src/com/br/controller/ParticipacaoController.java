@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.br.model.Aluno;
 import com.br.model.Participacao;
 import com.br.services.AlunoService;
 import com.br.services.ParticipacaoService;

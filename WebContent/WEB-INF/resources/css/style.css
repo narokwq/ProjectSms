@@ -263,7 +263,7 @@ ul.sidebar-menu li.active a i {
 .info-box {
     display: block;
     min-height: 140px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     padding: 20px;
     color: white;
     text-decoration: none;
@@ -336,4 +336,14 @@ ul.sidebar-menu li.active a i {
     left: 0;
     right: 0;
     z-index: 1002;
+}
+
+.blocks-3{
+	position: relative;
+  	display: inline-block;
+  	float:left;
+  	padding-right: 15px;
+  	padding-left: 15px;
+	width: 450px;
+	margin-bottom: 20px;
 }
