@@ -24,9 +24,10 @@
 					<table class="table table-striped table-advance table-hover">
 						<tbody>
 							<tr>
-								<th><i class="icon_profile"></i> Nome</th>
-								<th><i class="icon_calendar"></i> Telefone</th>
-								<th><i class="icon_mail_alt"></i> Pontos</th>
+								<th><i class="fa fa-user" aria-hidden="true"></i> Nome</th>
+								<th><i class="fa fa-mobile" aria-hidden="true"></i> Telefone</th>
+								<th><i class="fa fa-trophy" aria-hidden="true"></i> Pontos</th>
+								<th><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Ação</th>
 								<!-- <th><i class="icon_pin_alt"></i> Ação</th> -->
 
 							</tr>
