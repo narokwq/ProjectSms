@@ -1,5 +1,7 @@
 package com.br.controller;
 
+import java.util.Collections;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -53,6 +55,7 @@ public class SalaController {
 	public String updateForm(@PathVariable String keyhash, ModelMap map) {
 		Sala sala = salaService.procurarByKey(keyhash);
 		if(sala != null){
+			Collections.sort(sala.getParticipacaos());
 			map.addAttribute("sala", sala);
 			map.addAttribute("keyhash", keyhash);
 			return "sala";
