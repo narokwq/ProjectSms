@@ -12,5 +12,7 @@ public class ParticipacaoDAO extends GenericDAO<Participacao> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 }

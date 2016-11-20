@@ -60,4 +60,16 @@ public class SalaController {
 		return "redirect:/home";
 		
 	}
+	/////////////////////// Guga
+	@RequestMapping(method = RequestMethod.GET, value = "{keyhash}/remover")
+	public String remover(@PathVariable String keyhash){
+		Sala sala = salaService.procurarByKey(keyhash);
+		System.out.println("entrou remover");
+		if(sala!= null){
+			salaService.remover(sala);
+		}
+		return "redirect:/home";
+		
+	}
+	
 }

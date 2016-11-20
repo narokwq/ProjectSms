@@ -35,11 +35,11 @@
 								<td>${participacao.aluno.nome}</td>
 								<td>${participacao.aluno.telefone}</td>
 								<td>${participacao.pontuacao}</td>
-<%-- 								<td>
+ 								<td>
 									<div class="btn-group">
-										<a class="btn btn-danger" href="<c:url value="/aluno/${participacao.id}/remover" />"><i class="fa fa-trash-o"></i></a>
+										<a class="btn btn-danger" href="<c:url value="/participacao/${participacao.id}/addPonto" />"><i class="fa fa-trash-o"></i></a>
 									</div>
-								</td> --%>
+								</td> 
 							</tr>
 							</c:forEach>
 
