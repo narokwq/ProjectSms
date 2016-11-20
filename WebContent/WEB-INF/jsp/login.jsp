@@ -74,11 +74,12 @@
 
 
 	<div>
-		<c:if test="${mensagem != null}">
+		<c:if test="${message != null}">
 			<div class="alert alert-danger" role="alert"
-				style="margin: auto; width: 50%;">${mensagem}</div>
+				style="margin: auto; width: 50%;">${message}</div>
 		</c:if>
 	</div>
+	
 
 </body>
 </html>

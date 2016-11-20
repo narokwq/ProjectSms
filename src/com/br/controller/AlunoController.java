@@ -44,6 +44,7 @@ public class AlunoController {
 			aluno.addParts(participacao);
 			alunoService.criarParticipacao(participacao);
 		}
+		map.addAttribute("mensagem", "Usuário cadastrado com sucesso!");
 		return "redirect:/login";
 	}
 	

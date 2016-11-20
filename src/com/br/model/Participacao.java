@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "tb_participacao")
-public class Participacao implements EntityClass {
+public class Participacao implements EntityClass, Comparable<Participacao> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -67,5 +67,10 @@ public class Participacao implements EntityClass {
 	@Override
 	public String toString() {
 		return "Participacao [id=" + id + ", qtdQuestoes=" + qtdQuestoes + ", pontuacao=" + pontuacao + "]";
+	}
+
+	@Override
+	public int compareTo(Participacao participacao) {
+		return this.pontuacao>participacao.getPontuacao()?-1:this.pontuacao<participacao.getPontuacao()?1:0;
 	}
 }

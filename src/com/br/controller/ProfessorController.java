@@ -40,10 +40,10 @@ public class ProfessorController {
 		try {
 			professorService.criar(professor);
 		} catch (Exception e) {
-				map.addAttribute("message", "Usuario já existe!");
+				map.addAttribute("message", "Usuário já existe!");
 				return "form";
 		}
-
-		return "redirect:/login";
+		map.addAttribute("message","Cadastro efetuado com sucesso!");
+		return "form";
 	}
 }
