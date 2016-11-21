@@ -31,14 +31,24 @@
         <div id="sidebar"  class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
-                <li class="active">
-                    <a class="" href="<c:url value ="/home" />">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <span>Salas</span>
-                    </a>
-                </li>
+               
+	                <li class="sub-menu">
+	                    <a class="" href="#">
+	                        <i class="fa fa-home" aria-hidden="true"></i>
+	                        <span>Salas</span>
+	                        <span class="caret"></span>
+	                    </a>
+	                    <ul class="sub">
+	                        <li><a class="" href="<c:url value="/sala/form" />">Criar sala</a></li>
+	                        <li><a class="" href="<c:url value="/home" />">Listar sala</a></li>
+	                    </ul>
+	                </li>
+                
+
 
             </ul>
+
+
             <!-- sidebar menu end-->
         </div>
     </aside>

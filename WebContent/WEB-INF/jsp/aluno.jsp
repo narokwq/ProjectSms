@@ -84,12 +84,12 @@
 		    rules :{
 		    	nome : "required",
 				telefone : {
-					minlength: 2
+					minlength: 10
 				}
 		    },
 		    messages :{
 		    	telefone : {
-		    		minlength : 'Enter username'
+		    		minlength : 'Numero invalido'
 		        }
 		    }
 		    });
