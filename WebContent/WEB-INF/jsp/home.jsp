@@ -14,7 +14,7 @@
 			</div>
 
 			<c:forEach var="sala" items="${salas}">
-				<div class="blocks-3 blocks-4" >
+				<div class="blocks-3" >
 					<a href="sala/${sala.key}/list" class="info-box blue-bg"> <i
 						class="fa fa-users"></i>
 						<div class="count">${sala.nome}</div>
@@ -30,7 +30,7 @@
 
 
 
-			<div class="blocks-3 blocks-4">
+			<div class="blocks-3">
 				<a href="sala/form" class="info-box blue-bg"> <i
 					class="fa fa-plus"></i>
 					<div class="count sala">Criar Sala</div>
