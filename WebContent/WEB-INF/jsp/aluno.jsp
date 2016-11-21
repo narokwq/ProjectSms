@@ -17,7 +17,7 @@
 
 	<c:url var="url" value="salvar" />
 	<form:form class="form-horizontal form-login" action="${url}" method="post"
-		modelAttribute="aluno">
+		modelAttribute="aluno" id="form-cadastro">
 		<spring:bind path="nome">
 			<c:if test="${status.error}">
 				<div class="alert alert-danger col-sm-12"
@@ -76,6 +76,25 @@
 				style="margin: auto; width: 50%;">${mensagem}</div>
 		</c:if>
 	</div>
+	<script src="<c:url value ="/resources/js/jquery-3.1.1.min.js" />"></script>
+	<script src="<c:url value ="/resources/js/jquery.validate.min.js" />"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $("#form-cadastro").validate({
+		    rules :{
+		    	nome : "required",
+				telefone : {
+					minlength: 2
+				}
+		    },
+		    messages :{
+		    	telefone : {
+		    		minlength : 'Enter username'
+		        }
+		    }
+		    });
+		});
+	</script>
 
 </body>
 </html>

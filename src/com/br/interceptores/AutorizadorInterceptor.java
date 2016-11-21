@@ -25,7 +25,10 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		Matcher m2 = r2.matcher(uri);
 		System.out.println(uri);
 		if (uri.endsWith("login") || uri.endsWith("logar") || uri.endsWith("cliente/form")
-				|| uri.endsWith("cliente/salvar") || m.find() || m2.find()) {
+				|| uri.endsWith("cliente/salvar") || m.find() || m2.find()) {			
+			if(uri.endsWith("login") && session.getAttribute("usuario") != null){
+				response.sendRedirect(contextPath + "/home");
+			}
 			System.out.println("Entrou");
 			return true;
 		}

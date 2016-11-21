@@ -18,11 +18,13 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<c:url var="url" value="/aluno/${keyhash}/form"/>
-					<header class="panel-heading"> Alunos da Sala - <a href="<c:out value="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${url}" />">LINK CADASTRO</a></header>
+					<header class="panel-heading"> 
+						Alunos da Sala - <a href="<c:out value="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${url}" />">LINK CADASTRO</a>
+					</header>
 					
 
-					<table class="table table-striped table-advance table-hover">
-						<tbody>
+					<table id="myTable" class="table table-striped table-advance table-hover">
+						<thead>
 							<tr>
 								<th><i class="fa fa-user" aria-hidden="true"></i> Nome</th>
 								<th><i class="fa fa-mobile" aria-hidden="true"></i> Telefone</th>
@@ -31,6 +33,8 @@
 								<!-- <th><i class="icon_pin_alt"></i> Ação</th> -->
 
 							</tr>
+						</thead>
+						<tbody>
 							<c:forEach var="participacao" items="${sala.participacaos}">
 							<tr>
 								<td>${participacao.aluno.nome}</td>
@@ -48,10 +52,29 @@
 						</tbody>
 					</table>
 				</section>
+				
 			</div>
 		</div>
+<div>
 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTabs">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home"><a id="button" class="btn btn-primary" href="#" role="button">select</a></div>
+                    <div role="tabpanel" class="tab-pane" id="profile">Teste profile</div>
+                    <div role="tabpanel" class="tab-pane" id="messages">Teste Messages</div>
+                </div>
+
+            </div>
 	</section>
 </section>
+
+
 
 <%@ include file="footer.jsp"%>

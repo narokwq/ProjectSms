@@ -15,6 +15,7 @@
     <link href="<c:url value ="/resources/css/bootstrap-theme.css" />" rel="stylesheet">
     <link href="<c:url value ="/resources/css/font-awesome.min.css" />" rel="stylesheet" />
     <link href="<c:url value ="/resources/css/style.css" />" rel="stylesheet">
+    <link href="<c:url value ="/resources/css/datatables.min.css" />" rel="stylesheet">
 </head>
 <body>
 <section id="container" class="">

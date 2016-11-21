@@ -48,7 +48,14 @@
 
 					<div class="col-sm-offset-1 col-sm-10">
 						<form:password path="login.senha" class="form-control"
-							placeholder="Senha" required="required" autocomplete="off" />
+							placeholder="Senha" required="required" autocomplete="off" id="fsenha"/>
+					</div>
+				</div>
+				<div class="form-group" style="margin-top: 15px;">
+
+					<div class="col-sm-offset-1 col-sm-10">
+						<input type="password" name="senha" class="form-control"
+							placeholder="Confirmar senha" required="required" autocomplete="off" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -77,7 +84,26 @@
 				style="margin: auto; width: 50%;">${message}</div>
 		</c:if>
 	</div>
-	
+	<script src="<c:url value ="/resources/js/jquery-3.1.1.min.js" />"></script>
+	<script src="<c:url value ="/resources/js/jquery.validate.min.js" />"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $(".form-login").validate({
+		    rules :{
+		    	senha : {
+		    		required : true,
+		    		minlength: 2,
+		    		equalTo: "#fsenha"
+		    	}
+		    },
+		    messages :{
+		    	senha : {
+		    		minlength : 'senha incorreta'
+		        }
+		    }
+		    });
+		});
+	</script>
 
 </body>
 </html>

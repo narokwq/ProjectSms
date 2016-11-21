@@ -338,6 +338,82 @@ ul.sidebar-menu li.active a i {
     z-index: 1002;
 }
 
+.panel.panel-default.panel-heading {
+    background: #97d3c5;
+}
+.state .panel-body{
+    padding: 0px;
+}
+
+.panel .panel-heading {
+    line-height: 34px;
+    padding: 0 15px;
+    min-height: 34px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    position: relative;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+}
+.panel .panel-heading .panel-title {
+    line-height: 40px;
+}
+.panel .panel-heading i {
+    width: 30px;
+    display: inline-block;
+    font-size: 14px;
+    border-right:1px solid #e6e6e6 ;
+}
+.panel .panel-heading ul li {
+    border-top:1px solid #e6e6e6 ;
+    border-left:1px solid #e6e6e6 ;
+    border-right:1px solid #e6e6e6 ;
+}
+.panel .panel-heading h2 {
+    height: 100%;
+    width: auto;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    line-height: 34px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+.panel .panel-heading .panel-actions {
+    float: right;
+    margin-right: -15px;
+    height: 40px;
+    font-size: 0;
+}
+.panel .panel-heading .panel-actions i {
+    display: inline-block;
+    text-align: center;
+    width: 34px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    text-decoration: none;
+    font-size: 14px;
+}
+.panel .panel-heading .panel-actions a {
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    line-height: 32px;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    border-left: 1px solid rgba(0,0,0,.09);
+}
+
 .blocks-3{
 	position: relative;
   	display: inline-block;
@@ -346,4 +422,10 @@ ul.sidebar-menu li.active a i {
   	padding-left: 15px;
 	width: 450px;
 	margin-bottom: 20px;
+}
+
+.dataTables_wrapper{
+    border: solid #ccc;
+    border-width: 0px 1px 1px 1px;
+    padding: 15px;
 }
