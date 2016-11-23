@@ -22,7 +22,7 @@
     <header class="header bg_nav" >
         <a href="<c:url value ="/home" />" class="logo">Plim <span class="lite">Interativo</span></a>
         <div class="top-nav notification-row">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="<c:url value ="/logout" />">
+                    <a  href="<c:url value ="/logout" />">
                         <span class="logout">Logout</span>
                     </a>
         </div>
