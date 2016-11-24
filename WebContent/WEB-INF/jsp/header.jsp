@@ -16,6 +16,10 @@
     <link href="<c:url value ="/resources/css/font-awesome.min.css" />" rel="stylesheet" />
     <link href="<c:url value ="/resources/css/style.css" />" rel="stylesheet">
     <link href="<c:url value ="/resources/css/datatables.min.css" />" rel="stylesheet">
+    
+    <script src="<c:url value ="/resources/js/jquery-3.1.1.min.js" />"></script>
+	<script src="<c:url value ="/resources/js/datatables.min.js" />"></script>
+	<script src="<c:url value ="/resources/js/tabela.js" />"></script>
 </head>
 <body>
 <section id="container" class="">
@@ -26,6 +30,7 @@
                         <span class="logout">Logout</span>
                     </a>
         </div>
+        
     </header>
     <aside>
         <div id="sidebar"  class="nav-collapse ">
@@ -44,8 +49,6 @@
 	                    </ul>
 	                </li>
                 
-
-
             </ul>
 
 

@@ -3,10 +3,18 @@
 	<section class="wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="page-header">
-					
-					<i class="fa fa-files-o"></i> Sala 
-				</h3>
+				<div class="row">
+					<div class="col-lg-6">
+						<h3 class="page-header"><i class="fa fa-files-o" aria-hidden="true"></i> Sala </h3 >
+					</div>
+					<div class="col-lg-6">
+						<c:url var="url" value="/aluno/${keyhash}/form"/>
+						<span class="link-right">
+							<a href="<c:out value="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${url}" />"><i class="fa fa-link" aria-hidden="true"></i> LINK CADASTRO </a>
+						</span>
+					</div>
+				</div>
+				
 				<ol class="breadcrumb">
 					<li><i class="fa fa-home"></i><a href="<c:url value="/home" />">Home</a></li>
 					<li><i class="icon_document_alt"></i>Tabela</li>
@@ -17,15 +25,12 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<section class="panel">
-					<c:url var="url" value="/aluno/${keyhash}/form"/>
-					<header class="panel-heading"> 
-						Alunos da Sala - <a href="<c:out value="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${url}" />">LINK CADASTRO</a>
-					</header>
-					
+					<header class="panel-heading"> Alunos da Sala </header>
 
 					<table id="myTable" class="table table-striped table-advance table-hover">
 						<thead>
 							<tr>
+								<th>Codigo</th>
 								<th><i class="fa fa-user" aria-hidden="true"></i> Nome</th>
 								<th><i class="fa fa-mobile" aria-hidden="true"></i> Telefone</th>
 								<th><i class="fa fa-trophy" aria-hidden="true"></i> Pontos</th>
@@ -37,6 +42,7 @@
 						<tbody>
 							<c:forEach var="participacao" items="${sala.participacaos}">
 							<tr>
+								<td>${participacao.aluno.id}</td>
 								<td>${participacao.aluno.nome}</td>
 								<td>${participacao.aluno.telefone}</td>
 								<td>${participacao.pontuacao}</td>
@@ -55,26 +61,91 @@
 				
 			</div>
 		</div>
-<div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Alunos Sorteados</h4>
+		      </div>
+		      <div class="modal-body">
+		       <table class="table table-striped table-advance table-hover">
+						<thead>
+							<tr>
+								<th>Codigo</th>
+								<th><i class="fa fa-user" aria-hidden="true"></i> Nome</th>
+								<th><i class="fa fa-trophy" aria-hidden="true"></i> Pontos</th>
+								<!-- <th><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Ação</th> -->
 
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist" id="myTabs">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                </ul>
+							</tr>
+						</thead>
+						<tbody id="sorteado">
+							
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home"><a id="button" class="btn btn-primary" href="#" role="button">select</a></div>
-                    <div role="tabpanel" class="tab-pane" id="profile">Teste profile</div>
-                    <div role="tabpanel" class="tab-pane" id="messages">Teste Messages</div>
+						</tbody>
+					</table>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div>
+            <ul class="nav nav-tabs" role="tablist" id="myTabs">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Sorteio</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Grupo</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+	                <div class="col-lg-12">
+	                	<div class="row">
+		                	<div class="col-lg-6">
+		                		<div class="form-group ">
+										<label for="cqnt" class="control-label col-lg-2">Quantidade</label>
+										<div class="col-lg-3">
+											<input id="quantidade" name="cqnt" class="form-control" type="number" required="required" value="1" />
+										</div>
+										<a id="button" class="btn btn-primary col-lg-2" href="#" role="button">Sortear</a>
+								</div>
+		                	</div>
+	                	</div>
+	                	
+	                </div>
                 </div>
-
+                <div role="tabpanel" class="tab-pane" id="profile">...</div>
             </div>
+		</div>
 	</section>
 </section>
 
-
-
+</section>
+<script>    
+	$('#button').click( function () {
+		var alunos = Array();
+		var quantidade = $('#quantidade').val();
+		$('#myTable').DataTable().rows('.selected').data().each(function( value ) {
+			alunos.push(value[0]);
+			  
+		}); 
+		if(quantidade <= alunos.length && alunos.length > 0 && quantidade > 0){
+			$.post('<c:url value="/sala/${keyhash}/selecao" />', {'myArray[]': alunos, 'qnt':quantidade}, function (data) {
+				var result = "";
+				$.each(data, function(index, value ) {
+					console.log(value);
+					result += "<tr><td>"+value.id+"</td><td>"+value.nome+"</td><td>"+value.pontuacao+"</td></tr>";
+				}); 
+				$('#sorteado').html(result);
+				$('#myModal').modal(); 
+				
+			}); 
+			
+			console.log(quantidade);
+		}
+	});
+	
+</script>
 <%@ include file="footer.jsp"%>

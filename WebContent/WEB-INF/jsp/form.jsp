@@ -63,7 +63,7 @@
 					<div class="col-sm-offset-1 col-sm-10">
 						<button type="submit" class="btn btn-info blue">Cadastrar</button>
 
-						<h5 style="color: #ffffff; text-align: center; margin-top:13px;"><a href="<c:url value="/home" />">Se logue!</a></h5>
+						<h5 style="color: #ffffff; text-align: center; margin-top:13px;"><a href="<c:url value="/home" />">Login!</a></h5>
 						</div>
 
 					</div>
@@ -93,12 +93,13 @@
 		    	senha : {
 		    		required : true,
 		    		minlength: 2,
-		    		equalTo: "#fsenha"
+		    		equalTo: "login.senha"
 		    	}
 		    },
 		    messages :{
 		    	senha : {
-		    		minlength : 'senha incorreta'
+		    		minlength : 'Pelo menos 2 caracteres',
+		    		equalTo : 'Senhas não são iguais'
 		        }
 		    }
 		    });

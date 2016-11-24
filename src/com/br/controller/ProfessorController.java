@@ -44,6 +44,6 @@ public class ProfessorController {
 				return "form";
 		}
 		map.addAttribute("message","Cadastro efetuado com sucesso!");
-		return "form";
+		return "login";
 	}
 }

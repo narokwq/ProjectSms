@@ -45,4 +45,5 @@
 
 	</section>
 </section>
+</section>
 <%@ include file="footer.jsp"%>
