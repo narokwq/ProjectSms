@@ -96,7 +96,7 @@ public class SalaController {
 			for (Participacao part : sala.getParticipacaos()) {
 				if(myArray.get(numero) == part.getAluno().getId()){
 					System.out.println(part.getAluno().getTelefone());
-					SMS.enviarSms(part.getAluno().getTelefone()); //
+					SMS.enviarSms(part.getAluno().getTelefone());
 					sorteados.add(new Sorteado(part.getAluno().getId(), part.getAluno().getNome(), part.getPontuacao()));		
 					myArray.remove(numero);
 					break;

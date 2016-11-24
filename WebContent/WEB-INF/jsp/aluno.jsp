@@ -47,7 +47,7 @@
 				<div class="form-group" style="margin-top: 15px;">
 
 					<div class="col-sm-offset-1 col-sm-10">
-						<form:input path="telefone" class="form-control"
+						<form:input path="telefone" class="form-control telefone"
 							placeholder="Celular" required="required" autocomplete="off" />
 					</div>
 				</div>
@@ -78,13 +78,27 @@
 	</div>
 	<script src="<c:url value ="/resources/js/jquery-3.1.1.min.js" />"></script>
 	<script src="<c:url value ="/resources/js/jquery.validate.min.js" />"></script>
-	<script type="text/javascript">
+		<script src="<c:url value ="/resources/js/jquery.mask.min.js" />"></script>
+	<script>
+	$(function() {
+		var CelMask = function (val) {
+			return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+		},
+		Options = {
+			      onKeyPress: function(val, e, field, options) {
+			          field.mask(CelMask.apply({}, arguments), options);
+			        }
+			    };
+		$('.telefone').mask(CelMask, Options);
+	});
+	</script>
+	 <script>
 		$(document).ready(function(){
 		    $("#form-cadastro").validate({
 		    rules :{
 		    	nome : "required",
 				telefone : {
-					minlength: 10
+					minlength: 14
 				}
 		    },
 		    messages :{
@@ -94,7 +108,7 @@
 		    }
 		    });
 		});
-	</script>
+	</script> 
 
 </body>
 </html>

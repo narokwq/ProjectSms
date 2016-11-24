@@ -20,21 +20,25 @@ public class SMS {
 	 
 	public static void enviarSms(String tel){
 		TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN); 
-		 
 		 // Build the parameters 
 		 List<NameValuePair> params = new ArrayList<NameValuePair>(); 
 		 params.add(new BasicNameValuePair("Body", "Hello from Java"));
-		 params.add(new BasicNameValuePair("To", "+55"+tel));
+		 params.add(new BasicNameValuePair("To", format(tel)));
 		 params.add(new BasicNameValuePair("From", "+12568294994"));
 	 
 		 MessageFactory messageFactory = client.getAccount().getMessageFactory(); 
-		 Message message = null;
 		try {
-			message = messageFactory.create(params);
-			 System.out.println(message.getSid()); 
+			 Message message= messageFactory.create(params);
 		} catch (TwilioRestException e) {
 		} 
-		
-		
+	}
+	private static String format(String telefone){
+		String telefoneFormatado = "+55";
+		for (int i = 0; i < telefone.length(); i++) {
+			if(Character.isDigit(telefone.charAt(i))){
+				telefoneFormatado += telefone.charAt(i);
+			}
+		}
+		return telefoneFormatado;
 	}
 }
