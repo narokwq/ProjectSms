@@ -1,5 +1,10 @@
 package com.br.util;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,15 +35,31 @@ public class SMS {
 		try {
 			 Message message= messageFactory.create(params);
 		} catch (TwilioRestException e) {
+			System.out.println(e);
 		} 
 	}
-	private static String format(String telefone){
-		String telefoneFormatado = "+55";
+	
+	public static String format(String telefone){
+		String telefoneFormatado = "";
 		for (int i = 0; i < telefone.length(); i++) {
 			if(Character.isDigit(telefone.charAt(i))){
 				telefoneFormatado += telefone.charAt(i);
 			}
 		}
 		return telefoneFormatado;
+	}
+	
+	
+	public static void enviarLocasms(String tel, String message){
+		try {
+			String urlString = String.format("http://54.173.24.177/painel/api.ashx?action=sendsms&lgn=83987182544&pwd=253620&msg=%s&numbers=%s", URLEncoder.encode(message, "UTF-8"), tel);
+			System.out.println(urlString);
+//			URL url = new URL(urlString);
+//			URLConnection conn = url.openConnection();
+//			conn.getInputStream();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

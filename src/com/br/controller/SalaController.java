@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.br.model.Grupo;
 import com.br.model.Participacao;
 import com.br.model.Professor;
 import com.br.model.Sala;
@@ -88,6 +89,33 @@ public class SalaController {
 	public @ResponseBody List<Sorteado> selecao(@PathVariable String keyhash, @RequestParam(value="myArray[]") List<Long> myArray, @RequestParam(value="qnt") int qnt){
 		Sala sala = salaService.procurarByKey(keyhash);
 		List<Sorteado> sorteados = new ArrayList<>();
+		List<String> numeroEscolhidos = new ArrayList<>();
+		
+		for (; 0 < qnt; qnt--) {
+			Random rand = new Random();
+			int numero = rand.nextInt(qnt+1);
+			
+			for (Participacao part : sala.getParticipacaos()) {
+				if(myArray.get(numero) == part.getAluno().getId()){
+					System.out.println(part.getAluno().getTelefone());
+					numeroEscolhidos.add(SMS.format(part.getAluno().getTelefone()));
+					sorteados.add(new Sorteado(part.getAluno().getId(), part.getAluno().getNome(), part.getPontuacao()));		
+					myArray.remove(numero);
+					break;
+				}
+				
+			}
+		}
+		
+		SMS.enviarLocasms(String.join(",", numeroEscolhidos), "Você foi escolhido!");
+ 
+		return sorteados;
+	}
+	
+	/*@RequestMapping(method = RequestMethod.POST, value = "{keyhash}/selecao", produces = "application/json")
+	public @ResponseBody List<Sorteado> selecao(@PathVariable String keyhash, @RequestParam(value="myArray[]") List<Long> myArray, @RequestParam(value="qnt") int qnt){
+		Sala sala = salaService.procurarByKey(keyhash);
+		List<Sorteado> sorteados = new ArrayList<>();
 		
 		for (; 0 < qnt; qnt--) {
 			Random rand = new Random();
@@ -103,11 +131,55 @@ public class SalaController {
 				}
 				
 			}
-		}
-
-//		
+		}	
  
 		return sorteados;
-	}
+	}*/
 	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "{keyhash}/grupo", produces = "application/json")
+	public @ResponseBody List<Grupo> grupo(@PathVariable String keyhash, @RequestParam(value="myArray[]") List<Long> myArray, @RequestParam(value="qnt") int qnt){
+		Sala sala = salaService.procurarByKey(keyhash);
+		Random rand = new Random();
+		List<Grupo> grupo = new ArrayList<>();
+		if(myArray.isEmpty()){
+			for (Participacao part : sala.getParticipacaos()) {
+				myArray.add(part.getAluno().getId());
+			}
+		}
+		int sortqnt = myArray.size();
+		int quantidadeAlunos = myArray.size() / qnt;
+		System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+		System.out.println(myArray);
+		
+		for (int i = 0; i < qnt; i++) {
+			String nomeGrupo = "Grupo "+i;
+			List<String> numeroEscolhidos = new ArrayList<>();
+			for (int j = 0; j < quantidadeAlunos; j++) {
+				
+				int numero = rand.nextInt(sortqnt+1);
+				for (Participacao part : sala.getParticipacaos()) {
+					if(myArray.get(numero) == part.getAluno().getId()){
+						numeroEscolhidos.add(SMS.format(part.getAluno().getTelefone()));
+						grupo.add(new Grupo(nomeGrupo, part.getAluno().getNome()));
+						myArray.remove(numero);
+						break;
+					}
+				}
+				sortqnt--;
+				if(myArray.isEmpty())
+					break;
+			}
+			SMS.enviarLocasms(String.join(",", numeroEscolhidos), nomeGrupo);
+		}
+		for(Long aluno:myArray){
+			for (Participacao part : sala.getParticipacaos()) {
+				if(aluno == part.getAluno().getId()){
+					grupo.add(new Grupo("Grupo X", part.getAluno().getNome()));
+					break;
+				}
+			}
+		}
+		return grupo;
+	}
 }

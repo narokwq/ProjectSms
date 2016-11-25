@@ -70,20 +70,8 @@
 		        <h4 class="modal-title" id="myModalLabel">Alunos Sorteados</h4>
 		      </div>
 		      <div class="modal-body">
-		       <table class="table table-striped table-advance table-hover">
-						<thead>
-							<tr>
-								<th>Codigo</th>
-								<th><i class="fa fa-user" aria-hidden="true"></i> Nome</th>
-								<th><i class="fa fa-trophy" aria-hidden="true"></i> Pontos</th>
-								<!-- <th><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Ação</th> -->
-
-							</tr>
-						</thead>
-						<tbody id="sorteado">
-							
-
-						</tbody>
+		       <table id="sorteado" class="table table-striped table-advance table-hover">
+						
 					</table>
 		      </div>
 		      <div class="modal-footer">
@@ -103,9 +91,9 @@
                 <div role="tabpanel" class="tab-pane active" id="home">
 	                <div class="col-lg-12">
 	                	<div class="row">
-		                	<div class="col-lg-6">
-		                		<div class="form-group ">
-										<label for="cqnt" class="control-label col-lg-2">Quantidade</label>
+		                	<div class="col-lg-7">
+		                		<div class="form-group">
+										<label for="quantidade" class="control-label col-lg-2">Quantidade</label>
 										<div class="col-lg-3">
 											<input id="quantidade" name="cqnt" class="form-control" type="number" required="required" value="1" />
 										</div>
@@ -116,7 +104,22 @@
 	                	
 	                </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="profile">...</div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+					<div class="col-lg-12">
+	                	<div class="row">
+		                	<div class="col-lg-7">
+		                		<div class="form-group ">
+										<label for="gde" class="control-label col-sm-3">Quantidade de grupos</label>
+										<div class="col-lg-2">
+											<input id="gde" name="cqnt" class="form-control" type="number" required="required" value="1" />
+										</div>
+										<a id="gbutton" class="btn btn-primary col-lg-2" href="#" role="button">Criar</a>
+								</div>
+		                	</div>
+	                	</div>
+	                	
+	                </div>
+				</div>
             </div>
 		</div>
 	</section>
@@ -134,10 +137,47 @@
 		if(quantidade <= alunos.length && alunos.length > 0 && quantidade > 0){
 			$.post('<c:url value="/sala/${keyhash}/selecao" />', {'myArray[]': alunos, 'qnt':quantidade}, function (data) {
 				var result = "";
+				result += "<thead><tr>";
+				result += "<th>Codigo</th>";
+				result += "<th><i class=\"fa fa-user\" aria-hidden=\"true\"></i> Nome</th>";
+				result += "<th><i class=\"fa fa-trophy\" aria-hidden=\"true\"></i> Pontos</th>";
+				result += "</tr></thead><tbody>";
 				$.each(data, function(index, value ) {
 					console.log(value);
 					result += "<tr><td>"+value.id+"</td><td>"+value.nome+"</td><td>"+value.pontuacao+"</td></tr>";
 				}); 
+				result += "</tbody>";
+				$('#sorteado').html(result);
+				$('#myModal').modal(); 
+				
+			}); 
+			
+			console.log(quantidade);
+		}
+	});
+	
+	$('#gbutton').click( function () {
+		var alunos = Array();
+		var quantidade = $('#gde').val();
+		$('#myTable').DataTable().rows('.selected').data().each(function( value ) {
+			alunos.push(value[0]);
+		}); 
+		
+		if(quantidade <= alunos.length && quantidade > 0 || alunos.length == 0){
+			if(alunos.length == 0){
+				alunos.push("");
+			}
+			$.post('<c:url value="/sala/${keyhash}/grupo" />', {'myArray[]': alunos, 'qnt':quantidade}, function (data) {
+				var result = "";
+				result += "<thead><tr>";
+				result += "<th>Grupo</th>";
+				result += "<th><i class=\"fa fa-user\" aria-hidden=\"true\"></i> Nome</th>";
+				result += "</tr></thead><tbody>";
+				$.each(data, function(index, value ) {
+					console.log(value);
+					result += "<tr><td>"+value.grupo+"</td><td>"+value.nome+"</td></tr>";
+				}); 
+				result += "</tbody>";
 				$('#sorteado').html(result);
 				$('#myModal').modal(); 
 				
