@@ -157,7 +157,7 @@ public class SalaController {
 			List<String> numeroEscolhidos = new ArrayList<>();
 			for (int j = 0; j < quantidadeAlunos; j++) {
 				
-				int numero = rand.nextInt(sortqnt+1);
+				int numero = rand.nextInt(sortqnt);
 				for (Participacao part : sala.getParticipacaos()) {
 					if(myArray.get(numero) == part.getAluno().getId()){
 						numeroEscolhidos.add(SMS.format(part.getAluno().getTelefone()));

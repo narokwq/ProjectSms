@@ -54,9 +54,9 @@ public class SMS {
 		try {
 			String urlString = String.format("http://54.173.24.177/painel/api.ashx?action=sendsms&lgn=83987182544&pwd=253620&msg=%s&numbers=%s", URLEncoder.encode(message, "UTF-8"), tel);
 			System.out.println(urlString);
-//			URL url = new URL(urlString);
-//			URLConnection conn = url.openConnection();
-//			conn.getInputStream();
+			URL url = new URL(urlString);
+			URLConnection conn = url.openConnection();
+			conn.getInputStream();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
